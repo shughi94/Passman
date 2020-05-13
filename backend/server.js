@@ -5,25 +5,35 @@ const path = require('path')
 
 require('dotenv').config();
 
+// routers
+const user_router = require('./routes/user-router.js');
+
 const app = express();
 const port = process.env.PORT || 3005;
 
-const dbPath = path.resolve(__dirname, './db/passman.db')
-
-let db = new sqlite3.Database(dbPath, (err) => {
-    if (err) {
-        console.error(err.message);
-    }
-    else {
-        console.log('Connected to the database.');
-    } 
-});
+// DATABASE
+let db = require("./db/database.js");
 
 app.use(cors());
 app.use(express.json());
 
 app.get('/', function(req, res) {
     res.send('Hello World')
+});
+
+app.get("/api/users", (req, res, next) => {
+    var sql = "select * from user";
+    var params = [];
+    db.all(sql, params, (err, rows) => {
+        if (err) {
+          res.status(400).json({"error":err.message});
+          return;
+        }
+        res.json({
+            "message":"success",
+            "data":rows
+        })
+      });
 });
 
 app.listen(port, () =>{
