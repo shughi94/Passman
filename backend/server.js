@@ -21,20 +21,7 @@ app.get('/', function(req, res) {
     res.send('Hello World')
 });
 
-app.get("/api/users", (req, res, next) => {
-    var sql = "select * from user";
-    var params = [];
-    db.all(sql, params, (err, rows) => {
-        if (err) {
-          res.status(400).json({"error":err.message});
-          return;
-        }
-        res.json({
-            "message":"success",
-            "data":rows
-        })
-      });
-});
+app.use('/api/users', user_router);
 
 app.listen(port, () =>{
     console.log('app running on port: ' + port);
