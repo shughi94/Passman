@@ -10,7 +10,7 @@ let db = require("./../db/database.js");
 */
 
 router.post("/", (req, res, next) => {
-
+    
     let username = req.body.username;
     let password = req.body.password;
 
@@ -43,9 +43,8 @@ router.post("/", (req, res, next) => {
                     .sendStatus(200);
                 }
             else{
-                res.json({
-                    "message":"Wrong credential",
-                    "data":"NOPE"
+                res.status(401).json({
+                    "message":"Wrong credential"
                 });
             }
         })

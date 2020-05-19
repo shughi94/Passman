@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-let db = require("./../db/database.js");
+let db = require("../../db/database.js");
 
 /*
     /api/users
