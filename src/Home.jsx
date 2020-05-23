@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import "bootstrap/dist/css/bootstrap.min.css";
 
 export default class Home extends Component {
   constructor() {
@@ -27,9 +26,11 @@ export default class Home extends Component {
   DisplayCredentials(props) {
     const credentials = props.credentials;
     const listItems = credentials.map((cred) =>
-    <div key={"cred-" + cred.id} className="panel panel-default">
-      <div className="panel-heading">{cred.title}</div>
-      <div className="panel-body">{cred.website}</div>
+    <div key={"cred-" + cred.id} className="card border-primary mb-3">
+     <div className="card-block">
+        <div className="card-title">{cred.title}</div>
+        <div className="card-subtitle mb-2 text-muted">{cred.website}</div>
+      </div>
     </div>
     );
     return (
@@ -39,11 +40,15 @@ export default class Home extends Component {
   
   render() {
     return (
-      <div>
-        <h1>Home</h1>
-        <p>{this.state.message}</p>
-        <this.DisplayCredentials credentials={this.state.credentials} />
+    <div className="container-fluid">
+      <div id="first-half">
+          <this.DisplayCredentials credentials={this.state.credentials} />
       </div>
+      <div id="second-half"> 
+        <h2>Selected</h2>
+        <p>Some text here too.</p>
+      </div>
+    </div>
     );
   }
 }
