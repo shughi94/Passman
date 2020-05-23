@@ -29,7 +29,7 @@ export default class Login extends Component {
     .then(res => {
       console.log(res);
       if (res.status === 200) {
-        this.props.history.push('/api/home');
+        this.props.history.push('/');
       } else {
         this.setState({message: 'Login failed'});
       }
@@ -44,7 +44,7 @@ export default class Login extends Component {
     return (
       <form onSubmit={this.onSubmit}>
         <h1>Login</h1>
-        { this.state.message != '' && <h3 className="error"> { this.state.message } </h3> }
+        { this.state.message !== '' && <h3 className="error"> { this.state.message } </h3> }
         <input
           type="username"
           name="username"

@@ -2,16 +2,15 @@ const express = require('express');
 const router = express.Router();
 
 /*
-    /api
+    /
 */
 
 // module routers
 const user_router = require('./user/user-router.js');
+const credential_router = require('./credential/credential-router.js');
 
 router.get("/users", user_router);
 
-router.get("/home", (req, res, next) => {
-    res.send("PASSMAN APP");
-})
+router.use("/credentials", credential_router);
 
 module.exports = router;

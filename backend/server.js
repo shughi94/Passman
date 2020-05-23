@@ -26,7 +26,7 @@ app.get('/checkToken', withAuth, function(req, res) {
     res.sendStatus(200);
 });
 
-app.use('/api', withAuth, general_router);
+app.use('/', withAuth, general_router);
 
 app.listen(port, () =>{
     console.log('app running on port: ' + port);
