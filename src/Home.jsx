@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
+import Card from "react-bootstrap/Card";
 
 export default class Home extends Component {
   constructor() {
     super();
     this.state = {
       message: '',
-      credentials: []
+      credentials: [],
+      selected: {}
     }
   }
   
@@ -19,22 +21,21 @@ export default class Home extends Component {
       .then(response => response.json())
       .then(data => {
         this.setState(data);
-        console.log(data);
       });
   }
 
   DisplayCredentials(props) {
     const credentials = props.credentials;
     const listItems = credentials.map((cred) =>
-    <div key={"cred-" + cred.id} className="card border-primary mb-3">
-     <div className="card-block">
-        <div className="card-title">{cred.title}</div>
-        <div className="card-subtitle mb-2 text-muted">{cred.website}</div>
-      </div>
-    </div>
+    <Card className="credCard">
+      <Card.Header>{cred.title}</Card.Header>
+      <Card.Body>
+        <Card.Text>{cred.website}</Card.Text>
+      </Card.Body>
+    </Card>
     );
     return (
-      <div>{listItems}</div>
+      <div className="credCardDiv">{listItems}</div>
     );
   }
   
@@ -42,11 +43,20 @@ export default class Home extends Component {
     return (
     <div className="container-fluid">
       <div id="first-half">
-          <this.DisplayCredentials credentials={this.state.credentials} />
+        <Card className="credList">
+          <Card.Header>List of credentials</Card.Header>
+          <Card.Body>
+            <this.DisplayCredentials credentials={this.state.credentials} />
+          </Card.Body>
+        </Card>
       </div>
       <div id="second-half"> 
-        <h2>Selected</h2>
-        <p>Some text here too.</p>
+        <Card className="credSelected">
+          <Card.Header>Selected</Card.Header>
+          <Card.Body>
+            ...
+          </Card.Body>
+        </Card>
       </div>
     </div>
     );

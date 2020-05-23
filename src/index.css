@@ -17,7 +17,8 @@ code {
   width: 50%;
   float: left;
   height: 100%;
-  z-index: 1010101010
+  z-index: 1010101010;
+  text-align: center
 }
 
 #second-half {
@@ -25,5 +26,40 @@ code {
   width: 50%;
   float: left;
   height: 100%;
-  z-index: 1010101010
+  z-index: 1010101010;
+  text-align: center
 }
+
+#titleApp {
+  font-size: 32px;
+  font-family:Arial, Helvetica, sans-serif;
+  background-color: rgb(173, 255, 251);
+  padding:16px;
+  font-weight:bolder;
+  -moz-box-shadow: 2px 2px 6px #888;  
+  -webkit-box-shadow: 2px 2px 6px #888;  
+  box-shadow:2px 2px 6px #888;  
+  text-align:center;
+  display:block;
+  margin:16px;
+}
+#mainBody{
+  background-color: lightgray;
+  -moz-box-shadow: 2px 2px 6px #888;  
+  -webkit-box-shadow: 2px 2px 6px #888;  
+  box-shadow:2px 2px 6px #888;
+  display: flex;
+  margin:16px;
+  padding:16px;  
+}
+
+.credCardDiv {
+  display: inline-block;
+  width:18rem;
+}
+
+.credCard {
+  margin:20px;
+}
+
+

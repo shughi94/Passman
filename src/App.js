@@ -9,11 +9,13 @@ function App() {
   return (
     <div>
       <BrowserRouter>
-        <h1>PASSMAN</h1>
-        <Switch>
-          <Route path="/" exact component={withAuth(Home)} />
-          <Route path="/login" component={Login} />
-        </Switch>
+        <h1 id="titleApp">PASSMAN</h1>
+        <div id="mainBody">
+          <Switch>
+            <Route path="/" exact component={withAuth(Home)} />
+            <Route path="/login" component={Login} />
+          </Switch>
+        </div>
       </BrowserRouter>
     </div>
   );
