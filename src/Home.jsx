@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Card from "react-bootstrap/Card";
+import Button from "react-bootstrap/Button";
 
 export default class Home extends Component {
   constructor() {
@@ -9,6 +10,10 @@ export default class Home extends Component {
       credentials: [],
       selected: {}
     }
+  }
+
+  logout() {
+    console.log('logout...');
   }
   
   componentDidMount() {
@@ -49,6 +54,11 @@ export default class Home extends Component {
   render() {
     return (
     <div className="container-fluid">
+      <div id="userAction" >
+        User actions: 
+        <Button onClick={this.logout}>ADD CREDENTIAL</Button>
+        <Button onClick={this.logout}>LOGOUT</Button>
+      </div>
       <div id="first-half">
         <Card className="credList">
           <Card.Header>List of credentials</Card.Header>

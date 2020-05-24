@@ -12,6 +12,34 @@ code {
     monospace;
 }
 
+#loginButton {
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+#userAction {
+  position: relative;
+  background-color: white;
+  width: 80%;
+  padding:12px;
+  z-index: 1010101010;
+  text-align: center
+}
+
+input[type=username], input[type=password] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
 #first-half {
   position: relative;
   width: 50%;
@@ -33,7 +61,7 @@ code {
 #titleApp {
   font-size: 32px;
   font-family:Arial, Helvetica, sans-serif;
-  background-color: rgb(173, 255, 251);
+  background-color: lightgrey;
   padding:16px;
   font-weight:bolder;
   -moz-box-shadow: 2px 2px 6px #888;  
