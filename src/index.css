@@ -25,10 +25,12 @@ code {
 #userAction {
   position: relative;
   background-color: white;
-  width: 80%;
-  padding:12px;
+  width: 100%;
+  padding:12px 20px;
   z-index: 1010101010;
-  text-align: center
+  text-align: center;
+  margin:8px 0;
+  border: 1px solid #ccc;
 }
 
 input[type=username], input[type=password] {

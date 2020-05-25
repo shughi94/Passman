@@ -42,11 +42,11 @@ export default class Login extends Component {
 
   render() {
     return (
-      <div class="container">
+      <div className="container">
         <h1>Login</h1>
         <form onSubmit={this.onSubmit}>
           { this.state.message !== '' && <h3 className="error"> { this.state.message } </h3> }
-          <label for="username"><b>Username</b></label>
+          <label  htmlFor="username"><b>Username</b></label>
           <input
             type="username"
             name="username"
@@ -55,7 +55,7 @@ export default class Login extends Component {
             onChange={this.handleInputChange}
             required
           />
-          <label for="password"><b>Password</b></label>
+          <label htmlFor="password"><b>Password</b></label>
           <input
             type="password"
             name="password"

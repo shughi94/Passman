@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
+import { useHistory } from "react-router-dom";
 
 export default class Home extends Component {
   constructor() {
@@ -12,8 +13,29 @@ export default class Home extends Component {
     }
   }
 
-  logout() {
-    console.log('logout...');
+  LogoutButton() {
+    const history = useHistory();
+  
+    function logoutClick() {
+      fetch('/logout',{
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json'
+        }
+      }).then(() => {
+        history.push("/login");
+      })
+    }
+  
+    return (
+      <Button type="button" onClick={logoutClick}>
+        Logout
+      </Button>
+    );
+  }
+
+  addCredential() {
+    console.log('add-credential');
   }
   
   componentDidMount() {
@@ -56,8 +78,8 @@ export default class Home extends Component {
     <div className="container-fluid">
       <div id="userAction" >
         User actions: 
-        <Button onClick={this.logout}>ADD CREDENTIAL</Button>
-        <Button onClick={this.logout}>LOGOUT</Button>
+        <Button onClick={this.addCredential}>ADD CREDENTIAL</Button>
+        <this.LogoutButton />
       </div>
       <div id="first-half">
         <Card className="credList">
