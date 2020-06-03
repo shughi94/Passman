@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import { useHistory } from "react-router-dom";
+import {FaPlus} from "react-icons/fa";
 
 export default class Home extends Component {
   constructor() {
@@ -28,14 +29,25 @@ export default class Home extends Component {
     }
   
     return (
-      <Button type="button" onClick={logoutClick}>
+      <Button className="userActionButton" type="button" onClick={logoutClick}>
         Logout
       </Button>
     );
   }
 
   addCredential() {
-    console.log('add-credential');
+
+    const history = useHistory();
+
+    function addCredClick() {
+      history.push("/add-credential");
+    }
+   
+    return (
+      <Button className="userActionButton" type="button" onClick={addCredClick}>
+        Add Credential  &nbsp; &nbsp;<FaPlus />
+      </Button>
+    );
   }
   
   componentDidMount() {
@@ -76,9 +88,8 @@ export default class Home extends Component {
   render() {
     return (
     <div className="container-fluid">
-      <div id="userAction" >
-        User actions: 
-        <Button onClick={this.addCredential}>ADD CREDENTIAL</Button>
+      <div id="userAction" > 
+        <this.addCredential />
         <this.LogoutButton />
       </div>
       <div id="first-half">
