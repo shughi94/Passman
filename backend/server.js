@@ -1,5 +1,6 @@
 const express = require('express');
 const cors = require('cors');
+const path = require('path');
 const cookieParser = require('cookie-parser');
 
 require('dotenv').config();
@@ -21,6 +22,11 @@ let db = require("./db/database.js");
 app.use(cookieParser());
 app.use(cors());
 app.use(express.json());
+
+app.use(express.static(path.join(__dirname, 'build')));
+app.get('/', function(req, res) {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
 
 app.use('/login', login_router);
 app.use('/logout', logout_router);
