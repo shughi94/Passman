@@ -5,12 +5,12 @@ import { useHistory } from "react-router-dom";
 import {FaPlus} from "react-icons/fa";
 
 export default class Home extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       message: '',
       credentials: [],
-      selected: {}
+      selected: null
     }
   }
 
@@ -63,8 +63,60 @@ export default class Home extends Component {
       });
   }
 
-  cardClicked(id) {
+  cardClicked = (id) => {
     console.log('clicked card: '+id);
+
+    this.state.credentials.forEach(element => {
+      if(element.id == id){
+        this.setState({selected: element});
+      }
+    });
+  }
+
+  DisplaySelected(props) {
+
+    let element = props.selected;
+
+    function deleteCredential(elementId) {
+
+      console.log(elementId);
+      fetch('/credentials/' + elementId, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+      .then(res => {
+        if (res.status === 200) {
+          window.location.reload(true);
+        } else {
+         return;
+        }
+      });
+    }
+
+    if (element == null){
+      return (<div>No credential is selected</div>);
+    }
+    else {
+      return (
+      <div>
+        <Card border="primary" bg="light" >
+          <Card.Header>{element.title}</Card.Header>
+          <Card.Body>
+            <Card.Text>Website: {element.website}</Card.Text>
+            <Card.Text>{element.description}</Card.Text>
+            <Card.Text>Username: {element.username}</Card.Text>
+            <Card.Text>Password: {element.password}</Card.Text>
+          </Card.Body>
+        </Card>
+
+        <Button className="userActionButton" type="button" onClick={(event) => {event.preventDefault();deleteCredential(element.id)}}>
+          Delete
+        </Button>
+
+      </div>);
+    }
   }
 
   DisplayCredentials(props) {
@@ -104,7 +156,7 @@ export default class Home extends Component {
         <Card className="credSelected">
           <Card.Header>Selected</Card.Header>
           <Card.Body>
-            ...
+            <this.DisplaySelected selected={this.state.selected}></this.DisplaySelected>
           </Card.Body>
         </Card>
       </div>
