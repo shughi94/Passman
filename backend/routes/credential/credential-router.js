@@ -7,6 +7,22 @@ let db = require("../../db/database.js");
     /credentials
 */
 
+router.post("/", (req, res, next) => {
+    let user_id = req.user_id;
+
+    var params = [req.body.title, req.body.description, req.body.website, req.body.username, req.body.password, user_id];
+
+    db.run(`INSERT INTO credential VALUES(NULL,?,?,?,?,?,?)`, params, function(err) {
+        if (err) {
+            res.status(400).json({"error":err.message});
+            return;
+        }
+        res.json({
+            "message":"Success!"
+        })
+      });
+});
+
 router.get("/", (req, res, next) => {
     let user_id = req.user_id;
     

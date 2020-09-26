@@ -37,7 +37,7 @@ export default class Add extends Component {
 
   onSubmit = (event) => {
     event.preventDefault();
-    fetch('/credential', {
+    fetch('/credentials', {
       method: 'POST',
       body: JSON.stringify(this.state),
       headers: {
